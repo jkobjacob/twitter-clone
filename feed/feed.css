@@ -1,0 +1,9 @@
+* {
+    font-size: 24px;
+}
+
+.tweet-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
