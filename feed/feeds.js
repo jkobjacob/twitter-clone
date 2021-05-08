@@ -64,11 +64,11 @@ localStorage.setItem('tweets',JSON.stringify(tweets));
 
 class TweetModel {
     constructor() {
-        this.tweets = JSON.parse(localStorage.getItem('tweetsJson'));
+        this.tweets = JSON.parse(localStorage.getItem('tweets'));
     }
 
     _commit() {
-        localStorage.setItem('tweetsJson',JSON.stringify(this.tweets));
+        localStorage.setItem('tweets',JSON.stringify(this.tweets));
     }
 
 
@@ -205,5 +205,11 @@ class TweetController {
 }
 
 window.user = window.location.hash.split('#')[1];
+
+localStorage.setItem('activeUser',window.user);
+const activeUser = localStorage.getItem('activeUser');
+document.getElementById('profile').setAttribute('href',"file:///home/jkobjacob/Desktop/twitter-clone/profile/profile.html#" + activeUser);
+
+
 const app = new TweetController(new TweetModel(), new TweetView());
 
