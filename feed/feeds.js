@@ -77,8 +77,8 @@ class TweetModel {
         this.tweets[tweetIdx].liked_by.push(user);
         this._commit();
         this.onTweetChange(this.tweets);
-        console.log(this.tweets);
-        console.log(tweetIdx);
+        // console.log(this.tweets);
+        // console.log(tweetIdx);
     }
 
     addPost(tweet,user) {
@@ -102,7 +102,6 @@ class TweetView {
         this.tweetInput = this.getElement('#tweet');
         this.postBtn = this.getElement('#tweet-post');
         this.container = this.getElement('#feed-container');
-        this.likeBtns = "";
     }
 
     _resetInput() {
@@ -166,8 +165,6 @@ class TweetView {
             handler(value,window.user);
         });
     }
-
-
 }
 
 class TweetController {
@@ -205,10 +202,12 @@ class TweetController {
 }
 
 window.user = window.location.hash.split('#')[1];
-
 localStorage.setItem('activeUser',window.user);
+
 const activeUser = localStorage.getItem('activeUser');
-document.getElementById('profile').setAttribute('href',"file:///home/jkobjacob/Desktop/twitter-clone/profile/profile.html#" + activeUser);
+document
+  .getElementById('profile')
+  .setAttribute('href',"file:///home/jkobjacob/Desktop/twitter-clone/profile/profile.html#" + activeUser);
 
 
 const app = new TweetController(new TweetModel(), new TweetView());
